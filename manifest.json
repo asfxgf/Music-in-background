@@ -1,0 +1,26 @@
+// manifest.json
+{
+  "name": "Ma première extension : Quentin DELEGLISE",
+  "version": "1.0",
+  "description": "Test de la création d'une extension pour écouter de la musique",
+  "manifest_version": 2,
+  "background": {
+  "scripts": [
+    "background.js"
+    ]
+  },
+
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/image_musique.png"
+  },
+    "icons": {
+    "16": "images/image_musique.png",
+    "32": "images/image_musique.png",
+    "48": "images/image_musique.png",
+    "128": "images/image_musique.png"
+  }
+}
