@@ -18,7 +18,6 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
 
 
 
-
 // PLaylist fonction
 
 var audio = new Audio(),
@@ -27,8 +26,7 @@ var playlist = new Array('musique/313-amour-de-jeunesse-clip-officiel.mp3', 'mus
 
 audio.addEventListener('ended', function () {
     i = ++i < playlist.length ? i : 0;
-    console.log(i);
-    console.log(playlist[i]);
+    SetCurrentMusic();
     audio.src = playlist[i];
     audio.play();
 }, true);
@@ -37,23 +35,84 @@ audio.loop = false;
 audio.src = playlist[0];
 
 
-function NumberOfSongs() {
-  console.log('La playlist contient ' + playlist.length + ' sons');
+
+
+
+/* Mets à jour le titre de la musique actuel
+function AddTheCurrentMusic() {
+  var musique = "Musique 1";
+
+  document.getElementById("current title name").innerHTML = musique;
 }
 
-NumberOfSongs();
+AddTheCurrentMusic();
+*/
 
 
-function PlaylistAll() {
-  console.log(playlist);
-}
+
+/* Tentative de l'envoi d'un message vers popup.js EN CONSTRUCTION
+
+console.log("Envoi d'un message vers popup.js");
+chrome.runtime.sendMessage({
+    msg: "something_completed",
+    data: {
+        subject: "Loading",
+        content: "Just completed!"
+    }
+});
+
+console.log("Message envoyé vers popup.js");
+
+console.log("Réception du message en background");
+
+chrome.runtime.sendMessage({text: "popup opened"});
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.msg === "something_completed") {
+            //  To do something
+            console.log(request.data.subject)
+            console.log(request.data.content)
+        }
+    }
+);
+
+console.log("Message receptionné");
+*/
+
+// Test from stackoverflow
+
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        console.log("Background received: " + request.msg);
+        sendResponse({msg: playlist[i]});
+        console.log("Background sended: " + playlist[i]);
+    }
+)
+
+
+// Messages en background
+
+console.log('La playlist contient ' + playlist.length + ' sons : ');
+console.log('Liste des musiques : ' + playlist);
+
+
+
+
+// Affiche les infos de la musique en train d'être jouée
+function SetCurrentMusic() {
+  var musiquenumero = i+1;
+  console.log("Lancement de la musique numéro " + musiquenumero + " !");
+  }
+
+// Informations sur la playlist
 
 
 // Playlist play
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "playlist play") {
       console.log("Button Play pressed");
-      console.log(playlist[i]);
+      SetCurrentMusic();
       audio.play();
     }
 });
@@ -71,9 +130,8 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "playlist previous") {
       console.log("Button Previous pressed");
       i = --i < playlist.length ? i : 0;
-      console.log(i);
       audio.src = playlist[i];
-      console.log(playlist[i]);
+      SetCurrentMusic();
       audio.play();
     }
 });
@@ -83,9 +141,8 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "playlist next") {
       console.log("Button Next pressed")
       i = ++i < playlist.length ? i : 0;
-      console.log(i);
       audio.src = playlist[i];
-      console.log(playlist[i]);
+      SetCurrentMusic();
       audio.play();
     }
 });

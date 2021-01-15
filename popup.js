@@ -1,6 +1,49 @@
 // popup.js
 
 
+
+// Test from stackoverflow
+
+
+chrome.runtime.sendMessage({msg: "Hello"}, function(response) {
+    console.log("Popup received: " + response.msg);
+    var rep = response.msg;
+    rep.save
+});
+
+
+
+
+
+
+
+// Créer l'element html qui affiche la bonne musique EN CONSTRUCTION
+function CreateHTMLActualMusique() {
+  var currenttitlename = document.getElementById("current title name");
+  currenttitlename.innerHTML = "Prout";
+  console.log("Musique actuelle affichée");
+};
+
+CreateHTMLActualMusique();
+
+
+// Créer l'index de la playlist EN CONSTRUCTION
+function CreateIndexPlaylist() {
+  var IndexPlaylist = document.getElementById("index");
+};
+
+CreateIndexPlaylist();
+
+
+
+
+
+
+
+
+
+
+
 function listenClick() {
   const button = document.getElementById('send-data');
 
@@ -168,6 +211,16 @@ function CallRegardeMoi_Loop() {
     });
   };
 
+
+
+
+//-----------------------Affiche le titre de la musique en lecture-----------------------
+
+
+
+
+
+
 /* Aperçu de ce qu'il faut créer quand on ajoute un son
 
 function CallRegarde_Moi() {
@@ -190,10 +243,23 @@ function CallOmido_Lsd() {
 
 */
 
+/*  PISTE POUR RECEVOIR UN MESSAGE DU BACKGROUND VERS LA POPUP
+
+
 
 chrome.runtime.sendMessage({text: "popup opened"});
 
+chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+        if (request.msg === "something_completed") {
+            //  To do something
+            console.log(request.data.subject)
+            console.log(request.data.content)
+        }
+    }
+);
 
+*/
 
 
 listenClick();
@@ -221,8 +287,5 @@ CallRegardeMoi_Play();
 CallRegardeMoi_Pause();
 CallRegardeMoi_Reset();
 CallRegardeMoi_Loop();
-
-
 //CallRegarde_Moi();
 //CallOmido_Lsd();
-

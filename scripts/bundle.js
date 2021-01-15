@@ -7091,7 +7091,7 @@ function sendData() {
       }
     }
   ]);
-  console.log("musique ajoutée à la table Playlist");
+  console.log("musique ajoutée à la table Playlist dans Airtable");
 };
 /*
   fetch(url, {
