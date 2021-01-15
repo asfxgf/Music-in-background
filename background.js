@@ -23,6 +23,7 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
 var audio = new Audio(),
     i = 0;
 var playlist = new Array('musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3');
+var playlistlength = playlist.length.toString();
 
 
 //Quand une musique se termine, passe à la suite
@@ -82,14 +83,35 @@ chrome.runtime.onMessage.addListener(
 console.log("Message receptionné");
 */
 
-// Envoi les infos en réponse à la demande du popup
+// Envoi le titre de la musique jouée en réponse à la demande du popup
 
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+        if (request.msg == "Hello") {
         console.log("Background received : " + request.msg);
         //Envoi le titre en cours
         sendResponse({msg: playlist[i]});
         console.log("Background sended: " + playlist[i]);
+        //Envoi le nombre de musiques dans la playlist
+      }
+    });
+
+
+// Envoi la position du titre en réponse à la demande du popup
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+      if (request.msg == "Hello Track") {
+        //Position du son actuel dans l'array
+        var computerposition = playlist.indexOf(playlist[i]);
+        //Position pour un humain (+1)
+        var humanposition = computerposition + 1 + "/" + playlistlength;
+        console.log("computerposition : " + computerposition);
+        console.log("humanposition : " + humanposition);
+        console.log("Background received : " + request.msg);
+        //Envoi le titre en cours
+        sendResponse({msg: humanposition});
+        console.log(playlist.indexOf('musique/313-amour-de-jeunesse-clip-officiel.mp3') + "/" + playlistlength);
+        //Envoi le nombre de musiques dans la playlist
+      }
     });
 
 
