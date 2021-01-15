@@ -24,6 +24,8 @@ var audio = new Audio(),
     i = 0;
 var playlist = new Array('musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3');
 
+
+//Quand une musique se termine, passe à la suite
 audio.addEventListener('ended', function () {
     i = ++i < playlist.length ? i : 0;
     SetCurrentMusic();
@@ -80,15 +82,15 @@ chrome.runtime.onMessage.addListener(
 console.log("Message receptionné");
 */
 
-// Test from stackoverflow
+// Envoi les infos en réponse à la demande du popup
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log("Background received: " + request.msg);
+        console.log("Background received : " + request.msg);
+        //Envoi le titre en cours
         sendResponse({msg: playlist[i]});
         console.log("Background sended: " + playlist[i]);
-    }
-)
+    });
 
 
 // Messages en background
@@ -129,12 +131,12 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "playlist previous") {
       console.log("Button Previous pressed");
-      i = --i < playlist.length ? i : 0;
-      audio.src = playlist[i];
-      SetCurrentMusic();
-      audio.play();
+        i = --i > 0 ? i : 0;
+        audio.src = playlist[i];
+        SetCurrentMusic();
+        audio.play();
     }
-});
+  });
 
 // Playlist next
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){

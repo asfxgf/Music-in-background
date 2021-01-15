@@ -2,29 +2,20 @@
 
 
 
-// Test from stackoverflow
+// Ping...Pong qui affiche la musique actuelle from background
 
-
-chrome.runtime.sendMessage({msg: "Hello"}, function(response) {
+function ChangeMusicOnOpen() {
+  chrome.runtime.sendMessage({msg: "Hello"}, function(response) {
+    //Affiche la musique reçue via le background
     console.log("Popup received: " + response.msg);
-    var rep = response.msg;
-    rep.save
-});
+    //Récupère un element html du popup
+    var currenttitlename = document.getElementById("current title name");
+    //Ajoute la musique à l'element html
+    currenttitlename.innerHTML = response.msg;
+    console.log("Musique en cours : " + response.msg);
+    });
+  }
 
-
-
-
-
-
-
-// Créer l'element html qui affiche la bonne musique EN CONSTRUCTION
-function CreateHTMLActualMusique() {
-  var currenttitlename = document.getElementById("current title name");
-  currenttitlename.innerHTML = "Prout";
-  console.log("Musique actuelle affichée");
-};
-
-CreateHTMLActualMusique();
 
 
 // Créer l'index de la playlist EN CONSTRUCTION
@@ -114,6 +105,8 @@ function CallPlaylist_Previous() {
   button.addEventListener('click', () => {
 
     chrome.runtime.sendMessage({text: "playlist previous"});
+    // Actualise la musique du popup
+    ChangeMusicOnOpen();
     });
   };
 
@@ -123,8 +116,20 @@ function CallPlaylist_Next() {
   button.addEventListener('click', () => {
 
     chrome.runtime.sendMessage({text: "playlist next"});
+    // Actualise la musique du popup
+    ChangeMusicOnOpen();
     });
   };
+
+
+
+
+
+
+
+
+
+
 
 
 //-----------------------313-----------------------
@@ -268,12 +273,20 @@ listenClickAirtableList();
 listenOmido();
 
 
+//---Popup---
+
+
+
+ChangeMusicOnOpen(); // Affiche la musique en cours à l'ouverture
+
 
 //---Playlist---
 CallPlaylist_Play();
 CallPlaylist_Pause();
 CallPlaylist_Previous();
 CallPlaylist_Next();
+
+
 
 //---313---
 Call313_Play();
