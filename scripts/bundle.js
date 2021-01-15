@@ -7062,6 +7062,8 @@ function fetchData() {
   }
 }
 
+
+
 function sendData() {
 
 // Authentication
