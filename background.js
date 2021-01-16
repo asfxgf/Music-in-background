@@ -100,19 +100,39 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       if (request.msg == "Hello Track") {
+        console.log("Background received : " + request.msg);
         //Position du son actuel dans l'array
         var computerposition = playlist.indexOf(playlist[i]);
         //Position pour un humain (+1)
-        var humanposition = computerposition + 1 + "/" + playlistlength;
+        var humanposition = computerposition + 1;
+        //Text pour le popup
+        var textforpopup = "N°" + humanposition + "/" + playlistlength;
         console.log("computerposition : " + computerposition);
         console.log("humanposition : " + humanposition);
-        console.log("Background received : " + request.msg);
         //Envoi le titre en cours
-        sendResponse({msg: humanposition});
-        console.log(playlist.indexOf('musique/313-amour-de-jeunesse-clip-officiel.mp3') + "/" + playlistlength);
+        sendResponse({msg: textforpopup});
+        console.log( "textforpopup : " + textforpopup);
         //Envoi le nombre de musiques dans la playlist
       }
     });
+
+
+// Envoi la position du titre en réponse à la demande du popup
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+      if (request.msg == "Hello Index") {
+        console.log("Background received : " + request.msg);
+
+        //Envoi une réponse
+        sendResponse({msg: playlist});
+      }
+    });
+
+
+
+
+
+
 
 
 // Messages en background

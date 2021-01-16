@@ -10,12 +10,13 @@
 function ChangeMusicOnOpen() {
   chrome.runtime.sendMessage({msg: "Hello"}, function(response) {
     //Affiche la musique reçue via le background
-    console.log("Popup received: " + response.msg);
+    console.log("Popup received Music: " + response.msg);
     //Récupère un element html du popup
     var currenttitlename = document.getElementById("current title name");
+    var titreHumain = response.msg.slice(8, -4);
     //Ajoute la musique à l'element html
-    currenttitlename.innerHTML = response.msg;
-    console.log("Musique en cours : " + response.msg);
+    currenttitlename.innerHTML = titreHumain;
+    console.log("Musique en cours : " + titreHumain);
     });
   }
 
@@ -26,7 +27,7 @@ function ChangeMusicOnOpen() {
 function UpdatePositionOnOpen() {
   chrome.runtime.sendMessage({msg: "Hello Track"}, function(response) {
     //Affiche la position reçue
-    console.log("Position received: " + response.msg);
+    console.log("Popup received Position: " + response.msg);
     //Récupère un element html du popup
     var currentposition = document.getElementById("position in playlist");
     //Ajoute la position de la musique à l'element html
@@ -39,21 +40,51 @@ function UpdatePositionOnOpen() {
 
 // Ping...Pong qui met à jour l'index de la playlist
 
+
+
+
+
 function DisplayIndex() {
   chrome.runtime.sendMessage({msg: "Hello Index"}, function(response) {
-    //Affiche le nombre de musiques reçues via le background
-    console.log("Popup received: " + response.msg);
+    //Affiche l'index reçu via le background
+    console.log("Popup received Index: " + response.msg);
     //Récupère un element html du popup
-    var currentposition = document.getElementById("position in playlist");
-    //Ajoute la position de la musique à l'element html
-    currentposition.innerHTML = response.msg;
-    console.log(response.msg);
+
+    var playlist = response.msg;
+
+    console.log("la playlist en brut : " + playlist);
+    //Créer une ligne <li> avec le nom d'une musique
+    //var newline = document.createElement("li");
+    //newline.innerHTML = "2. Le roi Lion";
+    //console.log("newline : " + newline);
+    //Ajoute la liste des musiques dans l'index HTML
+    //newline.innerHTML = response.msg;
+    console.log("reponse.msg : " + response.msg);
+
+    playlist.forEach(displayOnIndex);
     });
   }
 
+//Utilisé sur chaque musique de la playlist pour afficher correctement l'index
+function displayOnIndex(item, index) {
+  var indexHumain = index + 1;
+  //Coupe les mots indésirables sur le titre de la musiqe
+  var itemHumain = item.slice(8, -4);
+  //Trouve l'index dans le popuphtml
+  var indexhtml = document.getElementById("index");
+  //Met en forme les musiques (fonctionnel mais pas joli)
+  //  document.getElementById("index").innerHTML += indexHumain + ":" + itemHumain + "<br>";
+  //  console.log("indexhumain : " + indexHumain + " item : " + item);
 
+  // Tentative de faire quelque chose de plus joli à display dans le popup
 
-
+  //Créer une ligne <li> avec le nom d'une musique
+  var newmusique = document.createElement("li");
+  //Rempli la ligne <li> Par du contenu dynamique (numéro + titre de la musique)
+  newmusique.innerHTML = indexHumain + "/ " + itemHumain;
+  indexhtml.appendChild(newmusique);
+  console.log("Nouvel ajout dans l'index : " + indexHumain + "/ " + itemHumain);
+}
 
 
 
