@@ -7065,7 +7065,7 @@ function fetchData() {
 
 
 
-
+/*   FONCTIONNEL API AIRTABLE !!!!!!!!!!!!!!!!!!!!!!!!
 //Permet d'envoyer une requête à Airtable, ici on créer un record dans la table Playlist
 function sendData() {
 
@@ -7096,30 +7096,12 @@ function sendData() {
   ]);
   console.log("musique ajoutée à la table Playlist dans Airtable");
 };
-/*
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer keyNsWhs7GZ7EsjjX"
-     },
-    body: JSON.stringify({
-        "records": [
-      {
-        "fields": {
-        "Titre": "test POSTMAN via Extension",
-        "URLYOUTUBE": "https://www.youtube.com/?hl=fr&gl=FR"
-      }
-    }
-  ]
-  })
 
-  })
-};
- */
 
 sendData();
 
+
+*/
 
 //Récupère les informations de Airtable via leur API
 function getData() {
@@ -7146,6 +7128,7 @@ function getData() {
       records.forEach(function(record) {
         //Affiche le titre de chaque chanson dans la console
           console.log('Retrieved', record.get('Title'));
+        //
       });
 
       // To fetch the next page of records, call `fetchNextPage`.

@@ -6,18 +6,12 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h3>Bienvenue sur Mon Extension, elle te permet d'écouter de la musique en arrière plan de chrome</h3>
-    <h3>1/ Concentre-toi sur ton travail, plus besoin d'avoir une fenêtre de musique ouverte.</h3>
-    <h3>2/ Plus besoin d'abonnement youtube premium</h3>
-    <h3>3/ Plus de pub entre chaque musique</h3>
-    <h3>4/ Plus besoin d'internet pour l'écoute</h3>
-    <h3>5/ Enjoy</h3>
-    <button id="send-data">Ajouter la musique à la playlist Airtable</button>
-    <br>
-    <h2>Musiques de la Playlist</h2>
+    <h2>Listes des musiques dans l'extension :</h2>
+    <p>(Attention ! Seules les musiques ajoutées à l'extension seront jouées par le lecteur)</p>
     <ul id="index"></ul>
     <div>
-      <h2 id="current title">La musique en lecture :</h2>
+    <h2><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Demander l'ajout d'un son dans l'extension</a></h2>
+      <h3 id="current title">Playlist globale(toutes les musiques sont jouées) :</h3>
       <h2 id="position in playlist"></h2>
       <h2 id="current title name"></h2>
     </div>
@@ -30,9 +24,8 @@
     <br>
     <br>
     <br>
-    <h2><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Ajouter un son à la playlist</a></h2>
-
-
+    <h2><a href="#">Créer une playlist personnelle (en cours de création)</a></h2>
+    <ul id=airtable index></ul>
 
 
     <!-- CONTENU CACHE Car oublié-->
@@ -59,7 +52,12 @@
       <button id="stop-musique">Eteindre la musique</button>
       <button id="Airtable-list">Airtable List</button>
       <button id="omido">Omido</button>
+      <button id="send-data">Ajouter une musique à la playlist d'airtable</button>
     </div>
+
+
+    <h5><a href="/about.html" target="_blank">About me</a></h5>
+    <!-- FIN CONTENU CACHE-->
   </body>
   <script src="scripts/require.js"></script>
   <script src="scripts/bundle.js"></script>
