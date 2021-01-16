@@ -7064,6 +7064,9 @@ function fetchData() {
 
 
 
+
+
+//Permet d'envoyer une requête à Airtable, ici on créer un record dans la table Playlist
 function sendData() {
 
 // Authentication
@@ -7116,5 +7119,47 @@ function sendData() {
  */
 
 sendData();
+
+
+//Récupère les informations de Airtable via leur API
+function getData() {
+
+// Authentication
+  const url = 'https://api.airtable.com/v0/appmKBfWeaeltuii4/Playlist';
+  //var base = new Airtable({apiKey:'keyNsWhs7GZ7EsjjX'}).base('appmKBfWeaeltuii4');
+
+  var Airtable = require('airtable');
+  Airtable.configure({
+    endpointUrl: "https://api.airtable.com",
+    apiKey: 'keyNsWhs7GZ7EsjjX'
+  });
+
+  const base = require('airtable').base('appmKBfWeaeltuii4');
+
+  base('Playlist').select({
+      // Selecting the first 3 records in Grid view:
+      maxRecords: 3,
+      view: "Grid view"
+  }).eachPage(function page(records, fetchNextPage) {
+      // This function (`page`) will get called for each page of records.
+
+      records.forEach(function(record) {
+        //Affiche le titre de chaque chanson dans la console
+          console.log('Retrieved', record.get('Title'));
+      });
+
+      // To fetch the next page of records, call `fetchNextPage`.
+      // If there are more records, `page` will get called again.
+      // If there are no more records, `done` will get called.
+      fetchNextPage();
+
+  }, function done(err) {
+      if (err) { console.error(err); return; }
+  });
+}
+
+getData();
+
+
 
 },{"airtable":3}]},{},[202]);
