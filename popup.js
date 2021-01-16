@@ -124,16 +124,6 @@ function listenClickAirtableList() {
 }
 
 
-function listenOmido() {
-  const buttonOmido = document.getElementById('omido');
-
-buttonOmido.addEventListener('click', () => {
-  chrome.tabs.executeScript({
-      file: 'backgroundSongs.js'
-    });
-  })
-}
-
 
 //-----------------------Playlist-----------------------
 
@@ -233,9 +223,6 @@ function Call313_Loop() {
 
 
 
-
-
-
 //-----------------------regarde-moi-----------------------
 
 function CallRegardeMoi_Play() {
@@ -277,58 +264,10 @@ function CallRegardeMoi_Loop() {
 
 
 
-//-----------------------Affiche le titre de la musique en lecture-----------------------
-
-
-
-
-
-
-/* Aperçu de ce qu'il faut créer quand on ajoute un son
-
-function CallRegarde_Moi() {
-  const button = document.getElementById('regarde_moi');
-
-  button.addEventListener('click', () => {
-
-    chrome.runtime.sendMessage({text: "regarde_moi"});
-    });
-  };
-
-function CallOmido_Lsd() {
-  const button = document.getElementById('omido_lsd');
-
-  button.addEventListener('click', () => {
-
-    chrome.runtime.sendMessage({text: "omido_lsd"});
-    });
-  };
-
-*/
-
-/*  PISTE POUR RECEVOIR UN MESSAGE DU BACKGROUND VERS LA POPUP
-
-
-
-chrome.runtime.sendMessage({text: "popup opened"});
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.msg === "something_completed") {
-            //  To do something
-            console.log(request.data.subject)
-            console.log(request.data.content)
-        }
-    }
-);
-
-*/
-
 
 listenClick();
 listenClickPlay();
 listenClickAirtableList();
-listenOmido();
 
 
 //---Popup---
@@ -361,4 +300,3 @@ CallRegardeMoi_Pause();
 CallRegardeMoi_Reset();
 CallRegardeMoi_Loop();
 //CallRegarde_Moi();
-//CallOmido_Lsd();

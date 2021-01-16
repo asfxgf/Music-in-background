@@ -1,11 +1,17 @@
 body {
   width: 400px;
   height: 400px;
-  margin: 0;
-  display: flex
+  margin: 20px;
+  display: block;
   justify-content: center;
 }
 
+
+
+li {
+  font-size: 16px;
+  font-weight: 450;
+}
 button#send-data {
   background: #C3413B;
   padding: 10px;
@@ -53,4 +59,13 @@ button#stop-musique:hover {
 
 button#stop-musique:active {
   background-color: green;
+}
+
+
+
+
+
+/* Cache du contenu qui jusque-là ne sera pas réutilisé*/
+#contenucache {
+  display: none;
 }

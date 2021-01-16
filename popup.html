@@ -6,55 +6,60 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Bienvenue sur Mon Extension, elle te permet d'écouter de la musique en arrière plan de chrome</h1>
-    <h2>1/ Concentre-toi sur ton travail, plus besoin d'avoir une fenêtre de musique ouverte.</h2>
-    <h2>2/ Plus besoin d'bonnement youtube premium</h2>
-    <h2>3/ Plus de pub entre chaque musique</h2>
+    <h3>Bienvenue sur Mon Extension, elle te permet d'écouter de la musique en arrière plan de chrome</h3>
+    <h3>1/ Concentre-toi sur ton travail, plus besoin d'avoir une fenêtre de musique ouverte.</h3>
+    <h3>2/ Plus besoin d'abonnement youtube premium</h3>
+    <h3>3/ Plus de pub entre chaque musique</h3>
+    <h3>4/ Plus besoin d'internet pour l'écoute</h3>
+    <h3>5/ Enjoy</h3>
     <button id="send-data">Ajouter la musique à la playlist Airtable</button>
-    <button id="run-musique">Lancer la musique</button>
-    <button id="stop-musique">Eteindre la musique</button>
-    <button id="Airtable-list">Airtable List</button>
-    <button id="omido">Omido</button>
     <br>
-    <br>
-    <br>
-    <h2>Playlist</h2>
+    <h2>Musiques de la Playlist</h2>
     <ul id="index"></ul>
-    <h2 id="current title">La musique en lecture :
-    <h2 id="position in playlist"></h2>
-    <h4 id="current title name"></h4>
-    </h2>
+    <div>
+      <h2 id="current title">La musique en lecture :</h2>
+      <h2 id="position in playlist"></h2>
+      <h2 id="current title name"></h2>
+    </div>
+    <img src="" alt="">
     <button id= "playlist play">Lancer playlist</button>
     <button id= "playlist pause">Pause playlist</button>
+    <br>
     <button id= "playlist previous">Musique précédente</button>
     <button id= "playlist next">Musique suivante</button>
-
-    <h2>Choisis un son :</h2>
-    <ul>
-      <li><h4>313</h4>
-        <button id= "313 play">Play</button>
-        <button id= "313 pause">Pause</button>
-        <button id= "313 reset">Reset</button>
-        <button id= "313 loop">Jouer en boucle</button>
-        <button id= "313 delete">Retirer ce son</button>
-      </li>
-
-      <li><h4>Regarde-moi</h4>
-        <button id= "regarde_moi play">Play</button>
-        <button id= "regarde_moi pause">Pause</button>
-        <button id= "regarde_moi reset">Reset</button>
-        <button id= "regarde_moi loop">Jouer en boucle</button>
-        <button id= "regarde_moi delete">Retirer ce son</button>
-      </li>
-
-      <!-- "Les 2 autres titres"
-      <li><button id= "regarde_moi">regarde_Moi</button></li>
-      <li><button id= "omido_lsd">omido_lsd</button></li>
-      -->
-    </ul>
-    <button>Ecouter tous les sons</button>
     <br>
-    <button>Ajouter un son</button>
+    <br>
+    <br>
+    <h2><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Ajouter un son à la playlist</a></h2>
+
+
+
+
+    <!-- CONTENU CACHE Car oublié-->
+    <div id="contenucache">
+      <h2>Choisis un son :</h2>
+      <ul>
+        <li><h4>313</h4>
+          <button id= "313 play">Play</button>
+          <button id= "313 pause">Pause</button>
+          <button id= "313 reset">Reset</button>
+          <button id= "313 loop">Jouer en boucle</button>
+          <button id= "313 delete">Retirer ce son</button>
+        </li>
+
+        <li><h4>Regarde-moi</h4>
+          <button id= "regarde_moi play">Play</button>
+          <button id= "regarde_moi pause">Pause</button>
+          <button id= "regarde_moi reset">Reset</button>
+          <button id= "regarde_moi loop">Jouer en boucle</button>
+          <button id= "regarde_moi delete">Retirer ce son</button>
+        </li>
+      </ul>
+      <button id="run-musique">Lancer la musique</button>
+      <button id="stop-musique">Eteindre la musique</button>
+      <button id="Airtable-list">Airtable List</button>
+      <button id="omido">Omido</button>
+    </div>
   </body>
   <script src="scripts/require.js"></script>
   <script src="scripts/bundle.js"></script>
