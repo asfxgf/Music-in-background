@@ -3,7 +3,7 @@
 
 // PLaylist fonction
 
-
+var playlist_globale = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
 var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3', 'musique/313-amour-de-jeunesse-clip-officiel.mp3'];
 var playlist = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
 var audio = new Audio(),
@@ -43,14 +43,16 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     }
 });
 
-//Affiche dans la console quand le bouton playlist 1 est cliqué
+
+//Affiche dans la console quand le bouton playlist globale est cliqué
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "playlist 1") {
-      console.log ("Message reçu, la playlist 1 est cliquée ");
+    if (message.text == "playlist globale") {
+      console.log ("Message reçu, la playlist globale est cliquée ");
       console.log("Changement des sons dans la playlist");
-      playlist = playlist_1;
+      playlist = playlist_globale;
       playlistlength = playlist.length;
       console.log("reinitialisation de la playlist");
+      i = 0;
       console.log("Vérification des nouveaux sons : " + playlist);
       console.log("Activation de la nouvelle playlist et des informations");
       playPlaylist();
@@ -58,6 +60,34 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
       sendResponse({msg: "newplaylist"});
     }
 });
+
+//Affiche dans la console quand le bouton playlist 1 est cliqué
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "playlist 1") {
+      console.log ("Message reçu, la playlist 1 est cliquée ");
+      console.log("Changement des sons dans la playlist");
+      //Change les musiques de la playlist
+      playlist = playlist_1;
+      //Met à jour le nombre de musiques dans la playlist
+      playlistlength = playlist.length;
+      console.log("reinitialisation de la playlist");
+      i = 0;
+      console.log("Vérification des nouveaux sons : " + playlist);
+      console.log("Activation de la nouvelle playlist et des informations");
+      // Reactive la fonction qui écoute le changement de musique
+      playPlaylist();
+      //Appui sur le bouton musique précédente
+      chrome.runtime.sendMessage({text: "playlist previous"});
+      // affiche l'audio actuel
+      console.log("l'audio actuel est : " + audio);
+
+
+      // Informe d'une nouvelle playlist
+      sendResponse({msg: "newplaylist"});
+    }
+});
+
+
 
 
 // Envoi le titre de la musique jouée en réponse à la demande du popup
@@ -69,7 +99,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         //Envoi le titre en cours
         sendResponse({msg: playlist[i]});
         console.log("Background sended: " + playlist[i]);
-        //Envoi le nombre de musiques dans la playlist
       }
     });
 

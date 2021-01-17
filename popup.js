@@ -9,7 +9,7 @@
 
 function ChangeMusicOnOpen() {
   chrome.runtime.sendMessage({msg: "Hello"}, function(response) {
-    //Affiche la musique reçue via le background
+    //Récupération de la musique en cours via le background
     console.log("Popup received Music: " + response.msg);
     //Récupère un element html du popup
     var currenttitlename = document.getElementById("current title name");
@@ -129,6 +129,9 @@ function CallPlaylist_Play() {
   button.addEventListener('click', () => {
 
     chrome.runtime.sendMessage({text: "playlist play"});
+    //Actualise la musique du popup
+    ChangeMusicOnOpen();
+    UpdatePositionOnOpen();
     });
   };
 
@@ -167,6 +170,27 @@ function CallPlaylist_Next() {
 
   //-----------------------Custom Playlist-----------------------
 
+// Lance la playlist globale et refresh les infos du popup
+
+function CallPlaylistGlobal() {
+  const button = document.getElementById('playlist globale');
+
+  button.addEventListener('click', () => {
+    // Informe que le bouton playlist gloabale a été cliqué
+    console.log("Le bouton playlist globale a été cliqué");
+    //chrome.runtime.sendMessage({text: "playlist_1"});
+    chrome.runtime.sendMessage({text: "playlist globale"}, function(response) {
+    //Affiche la reçu par le background
+    console.log("Popup received the new playlist order: " + response.msg);
+    ChangeMusicOnOpen();
+    UpdatePositionOnOpen();
+    DisplayIndex();
+  })});
+}
+
+
+// Lance la playlist 1 et refresh les infos du popup
+
 function CallPlaylist_1() {
   const button = document.getElementById('playlist 1');
 
@@ -176,12 +200,13 @@ function CallPlaylist_1() {
     //chrome.runtime.sendMessage({text: "playlist_1"});
     chrome.runtime.sendMessage({text: "playlist 1"}, function(response) {
     //Affiche la reçu par le background
-    console.log("Popup received the new playlist: " + response.msg);
+    console.log("Popup received the new playlist order: " + response.msg);
     ChangeMusicOnOpen();
     UpdatePositionOnOpen();
     DisplayIndex();
   })});
 }
+
 
 //-----------------------313 (obsolete)-----------------------
 
@@ -289,6 +314,7 @@ CallPlaylist_Next();
 
 //-----------------------Custom Playlist-----------------------
 
+CallPlaylistGlobal()
 CallPlaylist_1();
 
 
