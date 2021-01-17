@@ -32,17 +32,12 @@ function UpdatePositionOnOpen() {
     var currentposition = document.getElementById("position in playlist");
     //Ajoute la position de la musique à l'element html
     currentposition.innerHTML = response.msg;
-    console.log(response.msg);
     });
   }
 
 
 
 // Ping...Pong qui met à jour l'index de la playlist
-
-
-
-
 
 function DisplayIndex() {
   chrome.runtime.sendMessage({msg: "Hello Index"}, function(response) {
@@ -53,14 +48,14 @@ function DisplayIndex() {
     var playlist = response.msg;
 
     console.log("la playlist en brut : " + playlist);
-    //Créer une ligne <li> avec le nom d'une musique
-    //var newline = document.createElement("li");
-    //newline.innerHTML = "2. Le roi Lion";
-    //console.log("newline : " + newline);
-    //Ajoute la liste des musiques dans l'index HTML
-    //newline.innerHTML = response.msg;
-    console.log("reponse.msg : " + response.msg);
 
+    //Efface l'index existant
+    var songs = document.querySelectorAll("#index-li");
+    songs.forEach((song) => {
+      song.remove();
+      console.log(songs);
+    })
+    //Itère sur chaque item de la playlist la fonction "displayOnIndex"
     playlist.forEach(displayOnIndex);
     });
   }
@@ -82,14 +77,15 @@ function displayOnIndex(item, index) {
   var newmusique = document.createElement("li");
   //Rempli la ligne <li> Par du contenu dynamique (numéro + titre de la musique)
   newmusique.innerHTML = indexHumain + "/ " + itemHumain;
+  //Donne un id "index-li "au <li>
+  newmusique.id = "index-li";
   indexhtml.appendChild(newmusique);
   console.log("Nouvel ajout dans l'index : " + indexHumain + "/ " + itemHumain);
 }
 
 
 
-
-
+//-----------------------Obselète-----------------------
 
 function listenClick() {
   const button = document.getElementById('send-data');
@@ -169,18 +165,25 @@ function CallPlaylist_Next() {
     });
   };
 
+  //-----------------------Custom Playlist-----------------------
 
+function CallPlaylist_1() {
+  const button = document.getElementById('playlist 1');
 
+  button.addEventListener('click', () => {
+    // Informe que le bouton playlist 1 a été cliqué
+    console.log("Le bouton playlist 1 a été cliqué");
+    //chrome.runtime.sendMessage({text: "playlist_1"});
+    chrome.runtime.sendMessage({text: "playlist 1"}, function(response) {
+    //Affiche la reçu par le background
+    console.log("Popup received the new playlist: " + response.msg);
+    ChangeMusicOnOpen();
+    UpdatePositionOnOpen();
+    DisplayIndex();
+  })});
+}
 
-
-
-
-
-
-
-
-
-//-----------------------313-----------------------
+//-----------------------313 (obsolete)-----------------------
 
 function Call313_Play() {
   const button = document.getElementById('313 play');
@@ -223,7 +226,7 @@ function Call313_Loop() {
 
 
 
-//-----------------------regarde-moi-----------------------
+//-----------------------regarde-moi (obsolete)-----------------------
 
 function CallRegardeMoi_Play() {
   const button = document.getElementById('regarde_moi play');
@@ -270,33 +273,37 @@ listenClickPlay();
 listenClickAirtableList();
 
 
-//---Popup---
-
-
+//-----------------------PopUp MAJ-----------------------
 
 ChangeMusicOnOpen(); // Affiche la musique en cours à l'ouverture
 UpdatePositionOnOpen(); // Affiche la position de la musique en cours dans la playlist
 DisplayIndex(); // Affiche l'index des musiques
 
 
-//---Playlist---
+//-----------------------Playlist-----------------------
+
 CallPlaylist_Play();
 CallPlaylist_Pause();
 CallPlaylist_Previous();
 CallPlaylist_Next();
 
+//-----------------------Custom Playlist-----------------------
+
+CallPlaylist_1();
 
 
-//---313---
+//-----------------------313 obsolète-----------------------
+
 Call313_Play();
 Call313_Pause();
 Call313_Reset();
 Call313_Loop();
 
+//-----------------------Regarde_moi (obsolète)-----------------------
 
-//---Regarde moi---
 CallRegardeMoi_Play();
 CallRegardeMoi_Pause();
 CallRegardeMoi_Reset();
 CallRegardeMoi_Loop();
 //CallRegarde_Moi();
+

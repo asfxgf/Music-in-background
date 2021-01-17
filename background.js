@@ -1,6 +1,33 @@
 // background.js
 
-// Called when the user clicks on the browser action.
+
+// PLaylist fonction
+
+
+var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3'];
+var playlist = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
+var audio = new Audio(),
+    i = 0;
+var playlistlength = playlist.length.toString();
+
+
+function playPlaylist() {
+  //Quand une musique se termine, passe à la suite
+  audio.addEventListener('ended', function () {
+      i = ++i < playlist.length ? i : 0;
+  // Affiche les infos de la musique en train d'être jouée
+      SetCurrentMusic();
+      audio.src = playlist[i];
+      audio.play();
+  }, true);
+  audio.volume = 1;
+  audio.loop = false;
+  audio.src = playlist[0];
+}
+
+playPlaylist();
+
+// Called when the user clicks on the browser action. (semble obsolète)
 chrome.browserAction.onClicked.addListener((tab) => {
   chrome.tabs.executeScript({
     code: 'document.body.style.backgroundColor="#C3413B"'
@@ -8,7 +35,7 @@ chrome.browserAction.onClicked.addListener((tab) => {
 });
 
 
-//Code quand on clique sur la popup
+//Affiche dans la console quand la popup est ouverte (Utile plus tard pour concatener)
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "popup opened") {
         console.log ("Popup says it was opened.");
@@ -16,78 +43,29 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     }
 });
 
-
-
-// PLaylist fonction
-
-var audio = new Audio(),
-    i = 0;
-var playlist = new Array('musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3');
-var playlistlength = playlist.length.toString();
-
-
-//Quand une musique se termine, passe à la suite
-audio.addEventListener('ended', function () {
-    i = ++i < playlist.length ? i : 0;
-    SetCurrentMusic();
-    audio.src = playlist[i];
-    audio.play();
-}, true);
-audio.volume = 1;
-audio.loop = false;
-audio.src = playlist[0];
-
-
-
-
-
-/* Mets à jour le titre de la musique actuel
-function AddTheCurrentMusic() {
-  var musique = "Musique 1";
-
-  document.getElementById("current title name").innerHTML = musique;
-}
-
-AddTheCurrentMusic();
-*/
-
-
-
-/* Tentative de l'envoi d'un message vers popup.js EN CONSTRUCTION
-
-console.log("Envoi d'un message vers popup.js");
-chrome.runtime.sendMessage({
-    msg: "something_completed",
-    data: {
-        subject: "Loading",
-        content: "Just completed!"
+//Affiche dans la console quand le bouton playlist 1 est cliqué
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "playlist 1") {
+      console.log ("Message reçu, la playlist 1 est cliquée ");
+      console.log("Changement des sons dans la playlist");
+      playlist = playlist_1;
+      playlistlength = playlist.length;
+      console.log("reinitialisation de la playlist");
+      console.log("Vérification des nouveaux sons : " + playlist);
+      console.log("Activation de la nouvelle playlist et des informations");
+      playPlaylist();
+      // Informe d'une nouvelle playlist
+      sendResponse({msg: "newplaylist"});
     }
 });
 
-console.log("Message envoyé vers popup.js");
-
-console.log("Réception du message en background");
-
-chrome.runtime.sendMessage({text: "popup opened"});
-
-chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-        if (request.msg === "something_completed") {
-            //  To do something
-            console.log(request.data.subject)
-            console.log(request.data.content)
-        }
-    }
-);
-
-console.log("Message receptionné");
-*/
 
 // Envoi le titre de la musique jouée en réponse à la demande du popup
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         if (request.msg == "Hello") {
-        console.log("Background received : " + request.msg);
+        console.log("Background received : " + request.msg );
+        console.log("Envoi de la musique en cours...");
         //Envoi le titre en cours
         sendResponse({msg: playlist[i]});
         console.log("Background sended: " + playlist[i]);
@@ -107,11 +85,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         var humanposition = computerposition + 1;
         //Text pour le popup
         var textforpopup = "N°" + humanposition + "/" + playlistlength;
-        console.log("computerposition : " + computerposition);
-        console.log("humanposition : " + humanposition);
+        console.log("Envoi de la position du titre en cours : " + textforpopup);
         //Envoi le titre en cours
         sendResponse({msg: textforpopup});
-        console.log( "textforpopup : " + textforpopup);
         //Envoi le nombre de musiques dans la playlist
       }
     });
@@ -122,7 +98,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       if (request.msg == "Hello Index") {
         console.log("Background received : " + request.msg);
-
+        console.log("Envoi de la playlist : " + playlist);
         //Envoi une réponse
         sendResponse({msg: playlist});
       }
