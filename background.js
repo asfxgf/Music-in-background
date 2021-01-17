@@ -4,7 +4,7 @@
 // PLaylist fonction
 
 
-var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3'];
+var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3', 'musique/313-amour-de-jeunesse-clip-officiel.mp3'];
 var playlist = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
 var audio = new Audio(),
     i = 0;
