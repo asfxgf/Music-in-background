@@ -1,5 +1,75 @@
 // popup.js
 
+// AJOUTE TES PLAYLISTS ICI
+
+// AJoute les boutons des playlists
+
+
+
+
+function AskForPlaylists() {
+  chrome.runtime.sendMessage({text: "Please send playlists"}, function(response) {
+    console.log("Reception des playlists...");
+    console.log("Playlists received : " + response.msg);
+    //Créer une variable qui stock la liste des playlists
+    var all_playlists = response.msg;
+
+    //Trouve où placer les boutons
+    var findhtmlposition = document.getElementById("all playlists");
+    //Itère pour chaque playlist de l'array
+    all_playlists.forEach((playlist) => {
+    // Créer un element html
+    var newbutton = document.createElement("BUTTON");
+    //Remplis le texte du boutton
+    newbutton.innerHTML = playlist.name;
+    newbutton.setAttribute("class", "playlist");
+    newbutton.setAttribute("id", playlist.name);
+    //Pose le boutton au bon endroit
+    findhtmlposition.appendChild(newbutton);
+    console.log("Boutton : " + playlist.name + " ajouté !");
+    // Ajoute un micro à la playlist
+
+    const button = document.getElementById(playlist.name);
+
+    button.addEventListener('click', () => {
+    // Informe que le bouton playlist gloabale a été cliqué
+    console.log("Le bouton de la playlist : " + playlist.name + " a été cliqué");
+    chrome.runtime.sendMessage({text: "custom playlist cliquée", msg: playlist.name}, function(response) {
+    //Affiche la reçu par le background
+    console.log("Message reçu suite à la demande de changement de custom playlist : " + response.msg);
+    ChangeMusicOnOpen();
+    UpdatePositionOnOpen();
+    DisplayIndex();
+    chrome.runtime.sendMessage({text: "playlist play"});
+    })});
+    });
+  });
+}
+
+function SetThePlaylistCalled() {
+  const button = document.getElementById('playlist globale');
+
+  button.addEventListener('click', () => {
+    // Informe que le bouton playlist gloabale a été cliqué
+    console.log("Le bouton playlist globale a été cliqué");
+
+    chrome.runtime.sendMessage({text: "playlist globale"}, function(response) {
+    //Affiche la reçu par le background
+    console.log("Popup received the new playlist order: " + response.msg);
+    ChangeMusicOnOpen();
+    UpdatePositionOnOpen();
+    DisplayIndex();
+    chrome.runtime.sendMessage({text: "playlist play"});
+  })});
+}
+
+
+
+
+
+
+//
+
 
 //------------------------MAJ POPUP ELEMENTS DYNAMIQUES---------------------
 
@@ -62,6 +132,10 @@ function DisplayIndex() {
 
 //Utilisé sur chaque musique de la playlist pour afficher correctement l'index
 function displayOnIndex(item, index) {
+  var item = item;
+  var index = index;
+  console.log("ITEEEEEEEEMMMM : " + item);
+  console.log("INDEXXXXXXXXXX : " + index);
   var indexHumain = index + 1;
   //Coupe les mots indésirables sur le titre de la musiqe
   var itemHumain = item.slice(8, -4);
@@ -107,18 +181,6 @@ function listenClickPlay() {
     });
   })
 }
-
-function listenClickAirtableList() {
-  const buttonAirtableList = document.getElementById('Airtable-list');
-
-
-  buttonAirtableList.addEventListener('click', () => {
-    chrome.tabs.executeScript({
-      file: 'scripts/airtable-list.js'
-    });
-  })
-}
-
 
 
 //-----------------------Playlist-----------------------
@@ -185,6 +247,7 @@ function CallPlaylistGlobal() {
     ChangeMusicOnOpen();
     UpdatePositionOnOpen();
     DisplayIndex();
+    chrome.runtime.sendMessage({text: "playlist play"});
   })});
 }
 
@@ -204,6 +267,7 @@ function CallPlaylist_1() {
     ChangeMusicOnOpen();
     UpdatePositionOnOpen();
     DisplayIndex();
+    chrome.runtime.sendMessage({text: "playlist play"});
   })});
 }
 
@@ -295,7 +359,15 @@ function CallRegardeMoi_Loop() {
 
 listenClick();
 listenClickPlay();
-listenClickAirtableList();
+//listenClickAirtableList();
+
+
+
+
+//-----------------------Initialisation-----------------------
+
+AskForPlaylists();
+
 
 
 //-----------------------PopUp MAJ-----------------------

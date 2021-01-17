@@ -17,15 +17,15 @@ function fetchData() {
 
 function sendData(data) {
 
-  const url = 'https://api.airtable.com/v0/appmKBfWeaeltuii4/Playlist';
+  const url = 'https://api.airtable.com/v0/BASE/Playlist';
   var Airtable = require('airtable');
-  var base = new Airtable({apiKey: 'keyNsWhs7GZ7EsjjX'}).base('appmKBfWeaeltuii4');
+  var base = new Airtable({apiKey: 'API_KEY'}).base('BASE');
 
   fetch(url, {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer keyNsWhs7GZ7EsjjX"
+      "Authorization": "Bearer API_KEY"
      },
     body: JSON.stringify({
         "records": [
@@ -65,19 +65,19 @@ function fetchData() {
 function sendData() {
 
 // Authentication
-  const url = 'https://api.airtable.com/v0/appmKBfWeaeltuii4/Playlist';
-  //var base = new Airtable({apiKey:'keyNsWhs7GZ7EsjjX'}).base('appmKBfWeaeltuii4');
+  const url = 'https://api.airtable.com/v0/BASE_URL/Playlist';
+  //var base = new Airtable({apiKey:'API_KEY'}).base('BASE_URL');
 
   var Airtable = require('airtable');
   Airtable.configure({
     endpointUrl: "https://api.airtable.com",
-    apiKey: 'keyNsWhs7GZ7EsjjX'
+    apiKey: 'API_KEY'
   });
 
-  const base = require('airtable').base('appmKBfWeaeltuii4');
+  const base = require('airtable').base('BASE_URL');
 
   //var airtable = new Airtable({endpointUrl: 'https://api-airtable-com-8hw7i1oz63iz.runscope.net/'});
-  //var base = Airtable.base('appmKBfWeaeltuii4');
+  //var base = Airtable.base('BASE_URL');
 
   // create record
 
@@ -96,7 +96,7 @@ function sendData() {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer keyNsWhs7GZ7EsjjX"
+      "Authorization": "Bearer API_KEY"
      },
     body: JSON.stringify({
         "records": [

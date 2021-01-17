@@ -7065,24 +7065,24 @@ function fetchData() {
 
 
 
-/*   FONCTIONNEL API AIRTABLE !!!!!!!!!!!!!!!!!!!!!!!!
+/*   FONCTIONNEL API AIRTABLE  (clef a changer) !!!!!!!!!!!!!!!!!!!!!!!!
 //Permet d'envoyer une requête à Airtable, ici on créer un record dans la table Playlist
 function sendData() {
 
 // Authentication
-  const url = 'https://api.airtable.com/v0/appmKBfWeaeltuii4/Playlist';
-  //var base = new Airtable({apiKey:'keyNsWhs7GZ7EsjjX'}).base('appmKBfWeaeltuii4');
+  const url = 'https://api.airtable.com/v0/BASE_URL/Playlist';
+  //var base = new Airtable({apiKey:'APY_KEY'}).base('BASE_URL');
 
   var Airtable = require('airtable');
   Airtable.configure({
     endpointUrl: "https://api.airtable.com",
-    apiKey: 'keyNsWhs7GZ7EsjjX'
+    apiKey: 'APY_Key'
   });
 
-  const base = require('airtable').base('appmKBfWeaeltuii4');
+  const base = require('airtable').base('BASE_URL');
 
   //var airtable = new Airtable({endpointUrl: 'https://api-airtable-com-8hw7i1oz63iz.runscope.net/'});
-  //var base = Airtable.base('appmKBfWeaeltuii4');
+  //var base = Airtable.base('BASE_URL');
 
   // create record
 
@@ -7104,19 +7104,22 @@ sendData();
 */
 
 //Récupère les informations de Airtable via leur API
+
+
+/** IMPORTANT CEST CA QUI FONCTIONNAIT
+
 function getData() {
 
 // Authentication
-  const url = 'https://api.airtable.com/v0/appmKBfWeaeltuii4/Playlist';
-  //var base = new Airtable({apiKey:'keyNsWhs7GZ7EsjjX'}).base('appmKBfWeaeltuii4');
-
+//changer le base url
+  const url = 'https://api.airtable.com/v0/BASE_URL/Playlist';
   var Airtable = require('airtable');
   Airtable.configure({
     endpointUrl: "https://api.airtable.com",
-    apiKey: 'keyNsWhs7GZ7EsjjX'
+    apiKey: 'API_KEY'
   });
 
-  const base = require('airtable').base('appmKBfWeaeltuii4');
+  const base = require('airtable').base('BASE_URL');
 
   base('Playlist').select({
       // Selecting the first 3 records in Grid view:
@@ -7144,5 +7147,7 @@ function getData() {
 getData();
 
 
+
+FIN COMMENTAIRE */
 
 },{"airtable":3}]},{},[202]);

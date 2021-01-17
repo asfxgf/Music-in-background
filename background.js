@@ -1,8 +1,17 @@
 // background.js
 
 
-// PLaylist fonction
+// ICI CE SONT LES ELEMENTS MODIFIABLES :
 
+// PLaylist fonction (voir le tutoriel pour remplir cette section)
+
+var all_playlists = [
+  {name: 'playlist rock', list: ['musique/moji-x-sboy-regarde-moi-audio.mp3']},
+  {name: 'playlist jazz', list: ['musique/moji-x-sboy-regarde-moi-audio.mp3']},
+  {name: 'playlist rap', list: ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3']}
+];
+
+// Playlist
 var playlist_globale = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
 var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3', 'musique/313-amour-de-jeunesse-clip-officiel.mp3'];
 var playlist = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
@@ -35,13 +44,61 @@ chrome.browserAction.onClicked.addListener((tab) => {
 });
 
 
+//Affiche envoi les playlists
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "Please send playlists") {
+        console.log("I WILL SEND PLAYLISTS");
+        sendResponse({msg: all_playlists});
+        console.log("Nombre de playlists envoyées : " + all_playlists.length);
+    }
+});
+
+
+///// Fonction qui permet de chercher un ashe
+function search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i].name === nameKey) {
+            return myArray[i];
+        }
+    }
+}
+
+
+////// EN CONSTRUCTION
+//S'active quand une custom playlist a été cliquée
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "custom playlist cliquée") {
+      console.log ("Message reçu, custom playlist : " + message.msg + " a été cliquée ");
+      console.log("Changement des sons dans la playlist...");
+      //Appel la fonction search pour trouver la playlist dans all_playlists
+      var finded_playlist = search(message.msg, all_playlists);
+      console.log("Playlist trouvée : " + finded_playlist["name"]);
+      console.log("Musiques trouvées : " + finded_playlist["list"]);
+      //
+      playlist = finded_playlist["list"];
+      console.log("PLAYLIST DESORMAIS : " + playlist);
+      playlistlength = playlist.length.toString();
+      console.log("reinitialisation de la playlist");
+      i = 0;
+      console.log("Vérification des nouveaux sons : " + playlist);
+      console.log("Activation de la nouvelle playlist et des informations");
+      playPlaylist();
+      // Informe d'une nouvelle playlist
+      sendResponse({msg: "newplaylistlancé"});
+    }
+});
+
+
+
+
 //Affiche dans la console quand la popup est ouverte (Utile plus tard pour concatener)
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "popup opened") {
         console.log ("Popup says it was opened.");
-        // Run your script from here
     }
 });
+
+
 
 
 //Affiche dans la console quand le bouton playlist globale est cliqué
