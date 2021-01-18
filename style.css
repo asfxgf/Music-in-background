@@ -12,6 +12,27 @@ li {
   font-size: 16px;
   font-weight: 450;
 }
+
+
+
+.button_play {
+
+}
+
+.button_pause {
+
+}
+
+
+.playlist {
+  color: red;
+}
+
+
+
+
+
+
 button#send-data {
   background: #C3413B;
   padding: 10px;
@@ -60,10 +81,6 @@ button#stop-musique:hover {
 button#stop-musique:active {
   background-color: green;
 }
-
-
-
-
 
 /* Cache du contenu qui jusque-là ne sera pas réutilisé*/
 #contenucache {
