@@ -5,11 +5,26 @@
 // PLaylist fonction (voir le tutoriel pour remplir cette section)
 
 // Index de toute les playlists non + musiques
+
+/*
 var all_playlists = [
   {name: 'playlist rock', list: ['musique/Lefa---Bitch.mp3']},
   {name: 'playlist jazz', list: ['musique/Lefa---Bitch.mp3']},
   {name: 'playlist rap', list: ['musique/Lefa---Bitch.mp3']}
 ];
+*/
+
+var all_playlists = [
+// Copier-coller la liste en bas
+{name: 'Musique dambiance', list: ['musique/citrus-holy-henry.mp3','musique/Joey-Pecoraro---First-Kiss.mp3']},
+{name: 'Rap', list: ['musique/Lefa---Bitch.mp3','musique/PLK-SCH-Hier.mp3','musique/Damso---Mosaïque-Solitaire.mp3','musique/La-carte-blanche-de-Damso.mp3']},
+{name: 'Peace', list: ['musique/313-amour-de-jeunesse-clip-officiel.mp3','musique/Sia---Snowman.mp3','musique/Flume-&-Chet-Faker---Drop-the-Game.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Lomepal---Trop-beau.mp3','musique/Cocoon.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---You.mp3','musique/UMI---Remember-Me.mp3','musique/Steam-Phunk---Sophie.mp3','musique/Roderick-Porter---ghost.mp3','musique/Moji-x-Sboy---Pas-comme-elles.mp3','musique/Moji-x-Sboy---Ma-go.mp3']},
+{name: 'Chill', list: ['musique/Moji-x-Sboy-Regarde-moi.mp3','musique/Sia---Snowman.mp3','musique/Kailee-Morgue---F**K-U.mp3','musique/Yas---Empty-Crown.mp3','musique/Hippie-Sabotage---DIFFERENT.mp3','musique/Hippie-Sabotage---TRUST-NOBODY.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Cocoon.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---it-hurts.mp3','musique/guardin---take-away-the-pain.mp3']},
+{name: 'Electro / Trap', list: ['musique/The-Tech-Thieves---Fake.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/Dance-with-Me.mp3','musique/Roderick-Porter---Introspection.mp3']},
+{name: 'Sad mood', list: ['musique/YUZMV---Drogue.mp3']}
+//Copier-coller la liste en haut et retirer la dernière virgule qui dépasse.
+];
+
 
 // Index de toutes les musiques
 var playlist_globale = [
