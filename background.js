@@ -1,20 +1,86 @@
 // background.js
 
-
 // ICI CE SONT LES ELEMENTS MODIFIABLES :
 
 // PLaylist fonction (voir le tutoriel pour remplir cette section)
 
+// Index de toute les playlists non + musiques
 var all_playlists = [
-  {name: 'playlist rock', list: ['musique/moji-x-sboy-regarde-moi-audio.mp3']},
-  {name: 'playlist jazz', list: ['musique/moji-x-sboy-regarde-moi-audio.mp3']},
-  {name: 'playlist rap', list: ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3']}
+  {name: 'playlist rock', list: ['musique/Lefa---Bitch.mp3']},
+  {name: 'playlist jazz', list: ['musique/Lefa---Bitch.mp3']},
+  {name: 'playlist rap', list: ['musique/Lefa---Bitch.mp3']}
 ];
 
-// Playlist
-var playlist_globale = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
-var playlist_1 = ['musique/sia-snowman-cover-by-jfla.mp3', 'musique/313-amour-de-jeunesse-clip-officiel.mp3'];
-var playlist = ['musique/313-amour-de-jeunesse-clip-officiel.mp3', 'musique/moji-x-sboy-regarde-moi-audio.mp3', 'musique/sia-snowman-cover-by-jfla.mp3'];
+// Index de toutes les musiques
+var playlist_globale = [
+  'musique/313-amour-de-jeunesse-clip-officiel.mp3',
+  'musique/Moji-x-Sboy-Regarde-moi.mp3',
+  'musique/Lefa---Bitch.mp3',
+  'musique/citrus-holy-henry.mp3',
+  'musique/Sia---Snowman.mp3',
+  'musique/PLK-SCH-Hier.mp3',
+  'musique/Kailee-Morgue---F**K-U.mp3',
+  'musique/The-Tech-Thieves---Fake.mp3',
+  'musique/Yas---Empty-Crown.mp3',
+  'musique/Hippie-Sabotage---DIFFERENT.mp3',
+  'musique/Hippie-Sabotage---TRUST-NOBODY.mp3',
+  'musique/Flume-&-Chet-Faker---Drop-the-Game.mp3',
+  'musique/Abhi-The-Nomad---Letter-For-God.mp3',
+  'musique/Lomepal---Trop-beau.mp3',
+  'musique/Cocoon.mp3',
+  'musique/Hippie-Sabotage---DISTANCE.mp3',
+  'musique/Dance-with-Me.mp3',
+  'musique/Joey-Pecoraro---First-Kiss.mp3',
+  'musique/Roderick-Porter---Out-of-My-Mind.mp3',
+  'musique/Roderick-Porter---You.mp3',
+  'musique/Roderick-Porter---Introspection.mp3',
+  'musique/Roderick-Porter---it-hurts.mp3',
+  'musique/UMI---Remember-Me.mp3',
+  'musique/Steam-Phunk---Sophie.mp3',
+  'musique/guardin---take-away-the-pain.mp3',
+  'musique/Roderick-Porter---ghost.mp3',
+  'musique/Moji-x-Sboy---Pas-comme-elles.mp3',
+  'musique/Moji-x-Sboy---Ma-go.mp3',
+  'musique/Achile---Vie-normale.mp3',
+  'musique/YUZMV---Drogue.mp3',
+  'musique/Damso---Mosaïque-Solitaire.mp3',
+  'musique/La-carte-blanche-de-Damso.mp3'
+  ];
+var playlist_1 = ['musique/Lefa---Bitch.mp3'];
+var playlist = [
+  'musique/313-amour-de-jeunesse-clip-officiel.mp3',
+  'musique/Moji-x-Sboy-Regarde-moi.mp3',
+  'musique/Lefa---Bitch.mp3',
+  'musique/citrus-holy-henry.mp3',
+  'musique/Sia---Snowman.mp3',
+  'musique/PLK-SCH-Hier.mp3',
+  'musique/Kailee-Morgue---F**K-U.mp3',
+  'musique/The-Tech-Thieves---Fake.mp3',
+  'musique/Yas---Empty-Crown.mp3',
+  'musique/Hippie-Sabotage---DIFFERENT.mp3',
+  'musique/Hippie-Sabotage---TRUST-NOBODY.mp3',
+  'musique/Flume-&-Chet-Faker---Drop-the-Game.mp3',
+  'musique/Abhi-The-Nomad---Letter-For-God.mp3',
+  'musique/Lomepal---Trop-beau.mp3',
+  'musique/Cocoon.mp3',
+  'musique/Hippie-Sabotage---DISTANCE.mp3',
+  'musique/Dance-with-Me.mp3',
+  'musique/Joey-Pecoraro---First-Kiss.mp3',
+  'musique/Roderick-Porter---Out-of-My-Mind.mp3',
+  'musique/Roderick-Porter---You.mp3',
+  'musique/Roderick-Porter---Introspection.mp3',
+  'musique/Roderick-Porter---it-hurts.mp3',
+  'musique/UMI---Remember-Me.mp3',
+  'musique/Steam-Phunk---Sophie.mp3',
+  'musique/guardin---take-away-the-pain.mp3',
+  'musique/Roderick-Porter---ghost.mp3',
+  'musique/Moji-x-Sboy---Pas-comme-elles.mp3',
+  'musique/Moji-x-Sboy---Ma-go.mp3',
+  'musique/Achile---Vie-normale.mp3',
+  'musique/YUZMV---Drogue.mp3',
+  'musique/Damso---Mosaïque-Solitaire.mp3',
+  'musique/La-carte-blanche-de-Damso.mp3'
+  ];
 var audio = new Audio(),
     i = 0;
 var playlistlength = playlist.length.toString();
@@ -298,34 +364,6 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
 
 
 
-//--------------------------Regarde Moi----------------------------------------
-
-// Ajout de la musique Regarde Moi
-  var audio_element1 = document.createElement("audio");
-  audio_element1.src = "musique/moji-x-sboy-regarde-moi-audio.mp3";
-
-// Lancer Regarde Moi
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "regarde_moi play") {
-      audio_element1.play();
-    }
-});
-
-// Pause Regarde Moi
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "regarde_moi pause") {
-      audio_element1.pause();
-    }
-});
-
-// Reset Regarde Moi
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "regarde_moi reset") {
-      audio_element1.currentTime =0;
-      audio_element1.play();
-    }
-});
-
 // Lire Regarde Moi en boucle
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "regarde_moi loop") {
@@ -334,21 +372,6 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     }
 });
 
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "regarde_moi") {
-      var audio_element = document.createElement("audio");
-      audio_element.src = "musique/moji-x-sboy-regarde-moi-audio.mp3";
-      audio_element.play();
-    }
-});
-
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
-    if (message.text == "omido_lsd") {
-      var audio_element = document.createElement("audio");
-      audio_element.src = "musique/omido_lsd.mp3";
-      audio_element.play();
-    }
-});
 
 /* Permet de lancer une musique dans les documents au lancement
 
