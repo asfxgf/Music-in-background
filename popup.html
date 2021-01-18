@@ -6,27 +6,22 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h2>Listes des musiques dans l'extension :</h2>
-    <!-- <p>(Attention ! Seules les musiques ajoutées à l'extension seront jouées par le lecteur)</p> -->
     <div>
     <h2><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Demander l'ajout d'un son dans l'extension</a></h2>
-      <h3 id="current title">Playlist (par défaut, toutes les musiques de l'extension sont jouées) :</h3>
-      <h2 id="position in playlist"></h2>
-      <h2 id="current title name"></h2>
+      <h3 class="current_title" id="current title"></h3>
+      <h2 class="position_in_playlist" id="position in playlist"></h2>
+      <h2 class="current_title_name" id="current title name"></h2>
     </div>
-    <img src="" alt="">
-    <button class="button_play" id= "playlist play">Lancer playlist</button>
-    <button class="button_pause" id= "playlist pause">Pause playlist</button>
-    <br>
-    <button class="button_previous" id= "playlist previous">Musique précédente</button>
-    <button class= "button_next" id= "playlist next">Musique suivante</button>
-    <br>
-    <br>
-    <br>
-    <h2>Changer de playlist :</h2>
+    <div class="button_centered">
+      <button class="button_previous" id= "playlist previous">◀︎◀︎</button>
+      <button class="button_play" id= "playlist play">▶</button>
+      <button class="button_pause" id= "playlist pause">❚❚</button>
+      <button class= "button_next" id= "playlist next">▶︎▶︎</button>
+    </div>
+    <h2 class="dashed_at_top">Choisir une playlist :</h2>
     <button class="playlist" id="playlist globale">PLaylist globale</button>
     <button class ="playlist" id="playlist 1">PLaylist 1</button>
-    <h2 id="all playlists">Playlists générées automatiquement :</h2>
+    <h2 class="" id="all playlists"></h2>
     <h2>Listes des musiques dans cette playlist :</h2>
     <!-- <p>(Attention ! Seules les musiques ajoutées à l'extension seront jouées par le lecteur)</p> -->
     <ul id="index"></ul>

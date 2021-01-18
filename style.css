@@ -7,23 +7,107 @@ body {
   overflow: hidden;
 }
 
-
-
 li {
   font-size: 16px;
   font-weight: 450;
 }
 
+.dashed_at_top {
+  border-top: dashed black;
+  padding-top: 20px;
+}
+
+.button_centered {
+  margin-right: auto;
+  display: table;
+  margin-left: 50px;
+}
 
 
 .button_play {
 
+  color: #20bf6b !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 4px;
+  border: 4px solid #20bf6b !important;
+  border-radius: 25%;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  margin: 4px;
+  height: 80px;
+  width: 80px;
+}
+
+.button_play:hover {
+  color: #494949 !important;
+  border-radius: 50%;
+  border-color: #494949 !important;
+  transition: all 0.3s ease 0s;
 }
 
 .button_pause {
-
+  color: #20bf6b !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 4px;
+  border: 4px solid #20bf6b !important;
+  border-radius: 25%;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  margin: 4px;
+  height: 80px;
+  width: 80px
 }
 
+.button_pause:hover {
+  color: #494949 !important;
+  border-radius: 50%;
+  border-color: #494949 !important;
+  transition: all 0.3s ease 0s;
+}
+
+.button_previous {
+  color: #20bf6b !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 4px;
+  border: 4px solid #20bf6b !important;
+  border-radius: 25%;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  margin: 4px;
+  height: 80px;
+  width: 80px
+}
+
+
+.button_previous:hover {
+  color: #494949 !important;
+  border-radius: 50%;
+  border-color: #494949 !important;
+  transition: all 0.3s ease 0s;
+}
+.button_next {
+  color: #20bf6b !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 4px;
+  border: 4px solid #20bf6b !important;
+  border-radius: 25%;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  margin: 4px;
+  height: 80px;
+  width: 80px
+}
+
+.button_next:hover {
+  color: #494949 !important;
+  border-radius: 50%;
+  border-color: #494949 !important;
+  transition: all 0.3s ease 0s;
+}
 
 .playlist {
   color: #20bf6b !important;
@@ -44,12 +128,7 @@ li {
   transition: all 0.3s ease 0s;
 }
 
-.playlist:active {
-  color: green !important;
-  border-radius: 50px;
-  border-color: green !important;
-  transition: all 0.3s ease 0s;
-}
+
 
 .playlist:focus {
   color: black !important;
@@ -59,8 +138,24 @@ li {
   border: none;
 }
 
+.current_title {
+  margin-left: 50px;
+}
 
+.current_title_name {
+  margin-left: 50px;
+}
 
+.position_in_playlist {
+margin-left: 50px;
+}
+
+#index-li {
+  font-size: 22px;
+  font-weight: 450;
+  padding-bottom: 0.4em;
+  list-style: none;
+}
 
 button#send-data {
   background: #C3413B;

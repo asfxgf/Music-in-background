@@ -2,9 +2,10 @@
 
 // AJOUTE TES PLAYLISTS ICI
 
+
+
+
 // AJoute les boutons des playlists
-
-
 
 
 function AskForPlaylists() {
@@ -85,7 +86,7 @@ function ChangeMusicOnOpen() {
     var currenttitlename = document.getElementById("current title name");
     var titreHumain = response.msg.slice(8, -4);
     //Ajoute la musique à l'element html
-    currenttitlename.innerHTML = titreHumain;
+    currenttitlename.innerHTML = "▶▷▶▷  " + titreHumain + "  ◁◀◁◀";
     console.log("Musique en cours : " + titreHumain);
     });
   }
@@ -352,6 +353,22 @@ function CallRegardeMoi_Loop() {
     chrome.runtime.sendMessage({text: "regarde_moi loop"});
     });
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
