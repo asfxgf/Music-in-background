@@ -1,8 +1,9 @@
 // manifest.json
 {
-  "name": "Ma première extension : Quentin DELEGLISE",
+  "name": "Ma 1 ère extension : Lecteur de musique ",
   "version": "1.0",
-  "description": "Test de la création d'une extension pour écouter de la musique",
+  "description":
+  "Version 1 : Cette extension permet d'écouter de la musique en arrière plan",
   "manifest_version": 2,
   "background": {
   "scripts": [
