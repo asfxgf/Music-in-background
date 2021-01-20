@@ -1,12 +1,59 @@
-// popup.js
+/*
 
-// AJOUTE TES PLAYLISTS ICI
+Si un dev vient un jour  à lire ce fichier, je m'en excuse d'avance.
+Le code est mal organisé, mal refacto, et même pas fragmenté dans des fichiers séparés.
+La vérité c'est que je ne pensais pas créer une extension avec autant de features.
+Je me suis laissé prendre au jeu.
+Je pourrais refactoriser à la demande :
+deleglise.quentin@hotmail.fr
++33 77 31 76 86.
+améliorer ce projet à la base.
+
+*/
+
+// Initialisation slider
+
+// Déclaration des variables
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+
+// Est appelé quand il y a un changement de volume pour afficher la bonne valeur à jour
+function SetVolumeValueOnOpen() {
+  console.log("Demande de la valeur du volume au background");
+  chrome.runtime.sendMessage({text: "whats volume value ?"}, function(response) {
+  const volumevalue = response.msg * 100; // Remise à niveau de la bonne valeur du volume
+  console.log("Réponse du background : " + volumevalue);
+  slider.value = volumevalue;
+  output.innerHTML = volumevalue;
+  console.log("Mise à jour des elements HTML de volume effectuée");
+  });
+}
+
+SetVolumeValueOnOpen();
+//-----------------------SLIDER (BARRE SON)-----------------------
+
+// Demande de changer le volume au background, la réponse permet de modifier le html de la page
+function SendVolumeToBackground() {
+  const slideronlistener = document.getElementById("myRange");
+  const volume = document.getElementById('demo');
+  slideronlistener.addEventListener('mouseup', () => {
+    console.log("Envoi du nouveau volume au background : " + volume.innerHTML);
+    chrome.runtime.sendMessage({text: "volumechanged", msg: volume.innerHTML}, function(response) {
+      console.log("Volume modifié par le background");
+      console.log("sauvegarde de la valeur de la slidebar");
+    })});
+  };
+
+SendVolumeToBackground();
 
 
-
-
-// AJoute les boutons des playlists
-
+// Initialise les boutons des playlists et les events listeners liés
 
 function AskForPlaylists() {
   chrome.runtime.sendMessage({text: "Please send playlists"}, function(response) {
@@ -230,6 +277,15 @@ function CallPlaylist_Next() {
     UpdatePositionOnOpen();
     });
   };
+
+
+
+
+
+
+
+
+
 
   //-----------------------Custom Playlist-----------------------
 

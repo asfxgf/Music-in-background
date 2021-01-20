@@ -61,7 +61,7 @@ var playlist_globale = [
   'musique/Damso---Mosaïque-Solitaire.mp3',
   'musique/La-carte-blanche-de-Damso.mp3'
   ];
-var playlist_1 = ['musique/Lefa---Bitch.mp3'];
+var playlist_1 = ['musique/feu-de-cheminée.mp3'];
 var playlist = [
   'musique/313-amour-de-jeunesse-clip-officiel.mp3',
   'musique/Moji-x-Sboy-Regarde-moi.mp3',
@@ -100,17 +100,17 @@ var audio = new Audio(),
     i = 0;
 var playlistlength = playlist.length.toString();
 
+audio.volume = 0.90;
 
 function playPlaylist() {
   //Quand une musique se termine, passe à la suite
   audio.addEventListener('ended', function () {
       i = ++i < playlist.length ? i : 0;
   // Affiche les infos de la musique en train d'être jouée
-      SetCurrentMusic();
+      SetCurrentMusic(); // Affiche uniquement des infos ne mets rien à jour
       audio.src = playlist[i];
       audio.play();
   }, true);
-  audio.volume = 1;
   audio.loop = false;
   audio.src = playlist[0];
 }
@@ -145,7 +145,6 @@ function search(nameKey, myArray){
 }
 
 
-////// EN CONSTRUCTION
 //S'active quand une custom playlist a été cliquée
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
     if (message.text == "custom playlist cliquée") {
@@ -273,8 +272,25 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 
 
+// EN CONSTRUCTION : Modifie le volume du son et renvoie pour l'html du slider
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "whats volume value ?") {
+      volumevalue = audio.volume;
+      console.log("volume value : " + volumevalue);
+      sendResponse({msg: volumevalue});
+    }
+});
 
 
+// EN CONSTRUCTION : Modifie le volume du son et renvoie pour l'html du slider
+chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+    if (message.text == "volumechanged") {
+      const volumenow = message.msg / 100;
+      audio.volume = volumenow;
+      console.log("volume now : " + volumenow);
+      sendResponse({msg: volumenow});
+    }
+});
 
 
 
@@ -289,7 +305,7 @@ console.log('Liste des musiques : ' + playlist);
 // Affiche les infos de la musique en train d'être jouée
 function SetCurrentMusic() {
   var musiquenumero = i+1;
-  console.log("Lancement de la musique numéro " + musiquenumero + " !");
+  console.log("Lancement de SetCurrentMusic :  " + musiquenumero + " !");
   }
 
 // Informations sur la playlist

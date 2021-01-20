@@ -7,7 +7,7 @@
   </head>
   <body>
     <div>
-    <h2><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Demander l'ajout d'un son dans l'extension</a></h2>
+    <h2 id="airtable_link"><a href="https://airtable.com/shrnxddeesMWMXcmQ" target="_blank">Demander l'ajout d'un son dans l'extension</a></h2>
       <h3 class="current_title" id="current title"></h3>
       <h2 class="position_in_playlist" id="position in playlist"></h2>
       <h2 class="current_title_name" id="current title name"></h2>
@@ -18,23 +18,21 @@
       <button class="button_pause" id= "playlist pause">❚❚</button>
       <button class= "button_next" id= "playlist next">▶︎▶︎</button>
     </div>
+    <!-- Slider pour le volume  retrait de value="90" -->
+    <div class="slidecontainer">
+      <input type="range" min="0" value="90" max="100" class="slider" id="myRange">
+      <p id="volume">Volume : <span id="demo"></span></p>
+    </div>
     <h2 class="dashed_at_top">Choisir une playlist :</h2>
-    <button class="playlist" id="playlist globale">PLaylist globale</button>
-    <button class ="playlist" id="playlist 1">PLaylist 1</button>
-    <h2 class="" id="all playlists"></h2>
+    <div class="centered">
+      <button class="playlist" id="playlist globale">PLaylist globale (toutes les musiques)</button>
+      <button class ="playlist" id="playlist 1">Feu de cheminée (travail)</button>
+    </div>
+    <h2 class="centered" id="all playlists"></h2>
     <h2>Listes des musiques dans cette playlist :</h2>
     <!-- <p>(Attention ! Seules les musiques ajoutées à l'extension seront jouées par le lecteur)</p> -->
     <ul id="index"></ul>
     <h3><a href="/about.html" target="_blank">About me</a></h3>
-
-
-
-
-
-
-
-
-
 
 
 
