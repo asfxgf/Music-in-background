@@ -1,6 +1,6 @@
 # extension_test_1
 
-Pourquoi utiliser cette application ?
+Pourquoi utiliser cette extension ?
 
 -Ecoutez votre musique en arrière-plan de l'ordinateur, pendant que vous travaillez ou jouez, GRATUITEMENT, SANS PUB OU INTERRUPTION ET SANS UTILISER INTERNET.
 
