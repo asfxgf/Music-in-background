@@ -15,19 +15,109 @@ var all_playlists = [
 */
 
 var all_playlists = [
-// Copier-coller la liste en bas
-{name: 'Musique dambiance', list: ['musique/citrus-holy-henry.mp3','musique/Joey-Pecoraro---First-Kiss.mp3']},
-{name: 'Rap', list: ['musique/Lefa---Bitch.mp3','musique/PLK-SCH-Hier.mp3','musique/Damso---Mosaïque-Solitaire.mp3','musique/La-carte-blanche-de-Damso.mp3']},
-{name: 'Peace', list: ['musique/313-amour-de-jeunesse-clip-officiel.mp3','musique/Sia---Snowman.mp3','musique/Flume-&-Chet-Faker---Drop-the-Game.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Lomepal---Trop-beau.mp3','musique/Cocoon.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---You.mp3','musique/UMI---Remember-Me.mp3','musique/Steam-Phunk---Sophie.mp3','musique/Roderick-Porter---ghost.mp3','musique/Moji-x-Sboy---Pas-comme-elles.mp3','musique/Moji-x-Sboy---Ma-go.mp3']},
-{name: 'Chill', list: ['musique/Moji-x-Sboy-Regarde-moi.mp3','musique/Sia---Snowman.mp3','musique/Kailee-Morgue---F**K-U.mp3','musique/Yas---Empty-Crown.mp3','musique/Hippie-Sabotage---DIFFERENT.mp3','musique/Hippie-Sabotage---TRUST-NOBODY.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Cocoon.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---it-hurts.mp3','musique/guardin---take-away-the-pain.mp3']},
-{name: 'Electro / Trap', list: ['musique/The-Tech-Thieves---Fake.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/Dance-with-Me.mp3','musique/Roderick-Porter---Introspection.mp3']},
-{name: 'Sad mood', list: ['musique/YUZMV---Drogue.mp3']}
-//Copier-coller la liste en haut et retirer la dernière virgule qui dépasse.
+    // Copier-coller la liste en bas
+    //{name: 'Musique dambiance', list: ['musique/citrus-holy-henry.mp3','musique/Joey-Pecoraro---First-Kiss.mp3']},
+    //{name: 'Rap', list: ['musique/Lefa---Bitch.mp3','musique/PLK-SCH-Hier.mp3','musique/Damso---Mosaïque-Solitaire.mp3','musique/La-carte-blanche-de-Damso.mp3']},
+    //{name: 'Peace', list: ['musique/313-amour-de-jeunesse-clip-officiel.mp3','musique/Sia---Snowman.mp3','musique/Flume-&-Chet-Faker---Drop-the-Game.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Lomepal---Trop-beau.mp3','musique/Cocoon.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---You.mp3','musique/UMI---Remember-Me.mp3','musique/Steam-Phunk---Sophie.mp3','musique/Roderick-Porter---ghost.mp3','musique/Moji-x-Sboy---Pas-comme-elles.mp3','musique/Moji-x-Sboy---Ma-go.mp3']},
+    //{name: 'Chill', list: ['musique/Moji-x-Sboy-Regarde-moi.mp3','musique/Sia---Snowman.mp3','musique/Kailee-Morgue---F**K-U.mp3','musique/Yas---Empty-Crown.mp3','musique/Hippie-Sabotage---DIFFERENT.mp3','musique/Hippie-Sabotage---TRUST-NOBODY.mp3','musique/Abhi-The-Nomad---Letter-For-God.mp3','musique/Cocoon.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/guardin---i-think-youre-really-cool.mp3','musique/Roderick-Porter---Out-of-My-Mind.mp3','musique/Roderick-Porter---it-hurts.mp3','musique/guardin---take-away-the-pain.mp3']},
+    //{name: 'Electro / Trap', list: ['musique/The-Tech-Thieves---Fake.mp3','musique/Hippie-Sabotage---DISTANCE.mp3','musique/Dance-with-Me.mp3','musique/Roderick-Porter---Introspection.mp3']},
+    //{name: 'Sad mood', list: ['musique/YUZMV---Drogue.mp3']},
+    {
+        name: 'Ambiance', list: [
+            'musique/alleluia.mp3',
+            'musique/Asaf.mp3',
+            'musique/Ehrling-No-Worries.mp3',
+            'musique/I-Think-I-Like-When-It-Rains.mp3',
+            'musique/Ma-belle.mp3',
+            'musique/MBNN-&-Rowald Steyn.mp3',
+            'musique/PLK-Monegasque.mp3',
+            'musique/Tove-Lo-Habits.mp3',
+            'musique/VANUPIE-ROCKADOWN.mp3'
+        ]
+    },
+    {
+        name: 'Rap', list: [
+        'musique/2Spee-Gonzales.mp3',
+        'musique/Bienvenue-a-la-Banane.mp3',
+        'musique/Busta-flex.mp3',
+        'musique/Eloquence.mp3',
+        'musique/Faut-Quon-Taille.mp3',
+        'musique/Fonik.mp3',
+        'musique/FreezeRael.mp3',
+        'musique/Hugo-TSR-Autour-de-moi.mp3',
+        'musique/Hugo-TSR-Cendrier-plein-et-stylo-vide.mp3',
+        'musique/Hugo-TSR-conclure.mp3',
+        'musique/Hugo-TSR-convaincre.mp3',
+        'musique/Hugo-TSR-Couleur-miroir.mp3',
+        'musique/Hugo-TSR-En-marge.mp3',
+        'musique/Hugo-TSR-Fenetre-sur-rue.mp3',
+        'musique/Hugo-TSR-Iceberg.mp3',
+        'musique/Hugo-TSR-La-Haut.mp3',
+        'musique/Hugo-TSR-Objectif-lune.mp3',
+        'musique/Hugo-TSR-Old-boy.mp3',
+        'musique/Hugo-TSR-REI.mp3',
+        'musique/Hugo-TSR-Sensei.mp3',
+        'musique/HugoTSR-Coma.mp3',
+        'musique/Jeff-Le-Nerf.mp3',
+        'musique/katana.mp3',
+        'musique/Kema.mp3',
+        'musique/KMZ.mp3',
+        'musique/Papi-Fredo.mp3',
+        'musique/Pourquoi.mp3',
+        'musique/Pyroman.mp3',
+        'musique/Rabakar.mp3',
+        'musique/Sear-Lui-Meme.mp3',
+        'musique/Soso-TP.mp3',
+        'musique/TSR-Crew-A-quoi-ca-rime.mp3',
+        'musique/TSR-Crew-Bouteille-a-la-Seine.mp3',
+        'musique/TSR-Crew-Champs-De-Vision.mp3',
+        'musique/TSR-Crew-Crimes-Et-Sentiments.mp3',
+        'musique/TSR-Crew-Des-reves-jen-ai-plus.mp3',
+        'musique/TSR-CREW-Detenus.mp3',
+        'musique/TSR-Crew-Freres-de-son.mp3',
+        'musique/TSR-Crew-Ici.mp3',
+        'musique/TSR-Crew-Le-monde-daujourdhui.mp3',
+        'musique/TSR-Crew-Oublie-pas.mp3',
+        'musique/TSR-Crew-Sans-Sommation-Partie-1.mp3',
+        'musique/TSR-Crew-Sans-Sommation-Partie-3.mp3',
+        'musique/TSR-Crew-Savane-Sur-Du-Ciment.mp3',
+        'musique/TSR-Crew-Seum-Drogue-Millionnaire.mp3',
+        'musique/Vald-Je-taime.mp3'
+        ]
+    },
+        {
+        name: 'Chill', list: [
+        'musique/bedroom.mp3',
+        'musique/Disiz-heureux.mp3',
+        'musique/Else.mp3',
+        'musique/Ideal-Woman-Celeste-cover.mp3',
+        'musique/Kid-Cudi-Pursuit-Of-Happiness.mp3',
+        'musique/Lefa-Fame.mp3',
+        'musique/Lefa-Maniaque.mp3',
+        'musique/Society.mp3'
+        ]
+    },
+    {
+        name: 'Sad', list: [
+        'musique/Breezeblocks.mp3',
+        'musique/Crawl.mp3',
+        'musique/frank-sinatra.mp3',
+        'musique/home-edward.mp3',
+        'musique/home-matthew-hall.mp3',
+        'musique/Hymn-for-the-weekend-cover.mp3',
+        'musique/moonlight-polarrana.mp3',
+        'musique/Please-Dont-Go.mp3',
+        'musique/The-Neighbourhood.mp3',
+        'musique/white-mustang-lana-del-rey.mp3'
+        ]
+    },
+    //Copier-coller la liste en haut et retirer la dernière virgule qui dépasse.
 ];
 
 
 // Index de toutes les musiques
-var playlist_globale = [
+/*
+var playlist_globale = [ // Old list, fiels still there
   'musique/313-amour-de-jeunesse-clip-officiel.mp3',
   'musique/Moji-x-Sboy-Regarde-moi.mp3',
   'musique/Lefa---Bitch.mp3',
@@ -60,6 +150,85 @@ var playlist_globale = [
   'musique/YUZMV---Drogue.mp3',
   'musique/Damso---Mosaïque-Solitaire.mp3',
   'musique/La-carte-blanche-de-Damso.mp3'
+  ];
+*/
+
+var playlist_globale = [
+    'musique/313-amour-de-jeunesse-clip-officiel.mp3',
+    'musique/2Spee-Gonzales.mp3',
+    'musique/alleluia.mp3',
+    'musique/Asaf.mp3',
+    'musique/bedroom.mp3',
+    'musique/Bienvenue-a-la-Banane.mp3',
+    'musique/Breezeblocks.mp3',
+    'musique/Busta-flex.mp3',
+    'musique/Crawl.mp3',
+    'musique/Disiz-heureux.mp3',
+    'musique/Ehrling-No-Worries.mp3',
+    'musique/Eloquence.mp3',
+    'musique/Else.mp3',
+    'musique/Faut-Quon-Taille.mp3',
+    'musique/Fonik.mp3',
+    'musique/frank-sinatra.mp3',
+    'musique/FreezeRael.mp3',
+    'musique/home-edward.mp3',
+    'musique/home-matthew-hall.mp3',
+    'musique/Hugo-TSR-Autour-de-moi.mp3',
+    'musique/Hugo-TSR-Cendrier-plein-et-stylo-vide.mp3',
+    'musique/Hugo-TSR-conclure.mp3',
+    'musique/Hugo-TSR-convaincre.mp3',
+    'musique/Hugo-TSR-Couleur-miroir.mp3',
+    'musique/Hugo-TSR-En-marge.mp3',
+    'musique/Hugo-TSR-Fenetre-sur-rue.mp3',
+    'musique/Hugo-TSR-Iceberg.mp3',
+    'musique/Hugo-TSR-La-Haut.mp3',
+    'musique/Hugo-TSR-Objectif-lune.mp3',
+    'musique/Hugo-TSR-Old-boy.mp3',
+    'musique/Hugo-TSR-REI.mp3',
+    'musique/Hugo-TSR-Sensei.mp3',
+    'musique/HugoTSR-Coma.mp3',
+    'musique/Hymn-for-the-weekend-cover.mp3',
+    'musique/I-Think-I-Like-When-It-Rains.mp3',
+    'musique/ideal woman paula.mp3',
+    'musique/Ideal-Woman-Celeste-cover.mp3',
+    'musique/Jeff-Le-Nerf.mp3',
+    'musique/katana.mp3',
+    'musique/Kema.mp3',
+    'musique/Kid-Cudi-Pursuit-Of-Happiness.mp3',
+    'musique/KMZ.mp3',
+    'musique/Lefa-Fame.mp3',
+    'musique/Lefa-Maniaque.mp3',
+    'musique/Ma-belle.mp3',
+    'musique/MBNN-&-Rowald Steyn.mp3',
+    'musique/moonlight-polarrana.mp3',
+    'musique/Papi-Fredo.mp3',
+    'musique/Please-Dont-Go.mp3',
+    'musique/PLK-Monegasque.mp3',
+    'musique/Pourquoi.mp3',
+    'musique/Pyroman.mp3',
+    'musique/Rabakar.mp3',
+    'musique/Sear-Lui-Meme.mp3',
+    'musique/Society.mp3',
+    'musique/Soso-TP.mp3',
+    'musique/The-Neighbourhood.mp3',
+    'musique/Tove-Lo-Habits.mp3',
+    'musique/TSR-Crew-A-quoi-ca-rime.mp3',
+    'musique/TSR-Crew-Bouteille-a-la-Seine.mp3',
+    'musique/TSR-Crew-Champs-De-Vision.mp3',
+    'musique/TSR-Crew-Crimes-Et-Sentiments.mp3',
+    'musique/TSR-Crew-Des-reves-jen-ai-plus.mp3',
+    'musique/TSR-CREW-Detenus.mp3',
+    'musique/TSR-Crew-Freres-de-son.mp3',
+    'musique/TSR-Crew-Ici.mp3',
+    'musique/TSR-Crew-Le-monde-daujourdhui.mp3',
+    'musique/TSR-Crew-Oublie-pas.mp3',
+    'musique/TSR-Crew-Sans-Sommation-Partie-1.mp3',
+    'musique/TSR-Crew-Sans-Sommation-Partie-3.mp3',
+    'musique/TSR-Crew-Savane-Sur-Du-Ciment.mp3',
+    'musique/TSR-Crew-Seum-Drogue-Millionnaire.mp3',
+    'musique/Vald-Je-taime.mp3',
+    'musique/VANUPIE-ROCKADOWN.mp3',
+    'musique/white-mustang-lana-del-rey.mp3'
   ];
 var playlist_1 = ['musique/feu-de-cheminée.mp3'];
 var playlist = [
